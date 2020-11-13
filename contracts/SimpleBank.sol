@@ -67,8 +67,9 @@ contract SimpleBank {
     /// @return The users enrolled status
     // Emit the appropriate event
     function enroll() public returns (bool){
+        require(enrolled[msg.sender] == false); // make sure it's a new customer
         enrolled[msg.sender] = true;
-        balances[msg.sender] = 0;
+        balances[msg.sender] = 0; 
         emit LogEnrolled(msg.sender);
         return true;
 
